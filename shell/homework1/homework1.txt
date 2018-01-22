@@ -1,0 +1,20 @@
+Homework 1 Yuan Xiong yx292
+
+Data: First 7 trade files
+
+1)Get the first 5000 lines of each of those files in new files.
+2)Apply the edit modifications to those smaller files, and add a new column with the date of the file. 3_Add the modified files in Github
+Explain the following code: filename='test_taqtrade20141201'sed  '1 d' $filename | sed 's/[^[:alnum:]]\+$//;s/ \{1,\}/,/g' | sed 's/,/-/2g' | sed '1i A,B' | sed $'s/\r$//' | sed '/^$/d' > test_data.txt
+
+My explaination:
+filename='test_taqtrade20141201' : define a variable refer to the string 'test_taqtrade20141201'
+sed  '1 d' $filename : delete the first line in file $filename
+sed 's/[^[:alnum:]]\+$//;s/ \{1,\}/,/g' : 
+	The first part 's/[^[:alnum:]]\+$//' is to delete those none digits or characters at the end of each line. "\+" means one or more mathches.
+	The second part 's/ \{1,\}/,/g' is to substitute one or more space into comma in each line. g means globally substitue.
+sed 's/,/-/2g' : substitue from the second comma  into '-' globally in each line
+sed '1i A,B' : insert A,B in the first line
+sed $'s/\r$//': delete \r at the end
+sed '/^$/d' : delete the empty lines.
+> test_data.txt : output the text after those sed commends into file test_data.txt
+
