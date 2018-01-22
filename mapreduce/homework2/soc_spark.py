@@ -32,3 +32,4 @@ if os.path.isdir(output_dir):
 result.saveAsTextFile(output_dir)
 end=time.time()
 print(end-start)
+sc.stop()
