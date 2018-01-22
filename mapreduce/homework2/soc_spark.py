@@ -24,8 +24,8 @@ def gettopN(rec,topN):
             break
         if i[1]>0:
             x.append(i[0])
-    return rec[0],x
-result=count_groupby.map(lambda x: gettopN(x,10))
+    return int(rec[0]),x
+result=count_groupby.map(lambda x: gettopN(x,10)).sortByKey()
 #result=result.sortByKey(keyfunc=int) not working, why? 
 if os.path.isdir(output_dir):
     shutil.rmtree(output_dir)
